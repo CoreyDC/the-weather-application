@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+}
+
+/* HEADER STYLES */
+header {
+    background: linear-gradient(to right, #8fd2ff, #86a5ff, #000072);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    padding: 15px;
+    margin-top: 0;
+}
+
+/* INPUT STYLES */
+#search-section {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+#search, 
+#searchBtn {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+#search {
+    height: 40px;
+}
+
+#searchBtn {
+    height: 25px;
+    background-color: #86a5ff;
+    color: white;
+}
+
+#searchBtn:hover {
+    cursor: pointer;
+}

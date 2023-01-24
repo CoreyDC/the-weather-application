@@ -25,13 +25,13 @@ h1 {
     margin-left: 15px;
 }
 
-#search, 
+#search-city, 
 #searchBtn {
     width: 200px;
     margin-bottom: 10px;
 }
 
-#search {
+#search-city {
     height: 40px;
 }
 
@@ -43,4 +43,9 @@ h1 {
 
 #searchBtn:hover {
     cursor: pointer;
+}
+
+.cities {
+    list-style: none;
+    padding-left: 0;
 }

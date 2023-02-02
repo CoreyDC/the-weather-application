@@ -4,11 +4,12 @@
 
 body {
     margin: 0 auto;
-}
+} 
 
 /* HEADER STYLES */
 header {
     background: linear-gradient(to right, #8fd2ff, #86a5ff, #000072);
+    margin-bottom: 25px;
 }
 
 h1 {
@@ -22,13 +23,13 @@ h1 {
 #search-section {
     display: flex;
     flex-direction: column;
-    margin-left: 15px;
-}
+} 
 
 #search-city, 
 #searchBtn {
-    width: 200px;
-    margin-bottom: 10px;
+    margin: 10px 0 10px 0;
+    border-radius: 5px;
+    border-color: black;
 }
 
 #search-city {
@@ -36,16 +37,31 @@ h1 {
 }
 
 #searchBtn {
-    height: 25px;
     background-color: #86a5ff;
     color: white;
+    margin-bottom: 20px;
 }
 
 #searchBtn:hover {
     cursor: pointer;
 }
 
-.cities {
-    list-style: none;
+/* TODAYS WEATHER STYLES */
+#todays-weather {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+} 
+
+ul {
     padding-left: 0;
 }
+
+ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+/* FIVE DAY STYLES */
+

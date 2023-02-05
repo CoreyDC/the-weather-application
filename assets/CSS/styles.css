@@ -60,8 +60,14 @@ ul {
 
 ul li {
     list-style: none;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: small;
 }
 
 /* FIVE DAY STYLES */
-
+.card {
+    margin: 5px;
+    padding: 10px;
+    background-color: #86a5ff;
+    color: #fff;
+}

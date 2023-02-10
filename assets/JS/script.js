@@ -3,6 +3,7 @@
 var apiKey = 'b1e116f4023797b243caec34eaa26f25';
 const searchBtn = $('#searchBtn');
 let degreesSym = '\u00B0';
+const citySearch = $('#search-city');
 
 // TODAYS WEATHER VARIABLES
 const currentContain = $('#todays-weather');
@@ -50,10 +51,10 @@ searchBtn.on("click", getApi);
 // FUNCTION TO GET USER CITY INPUT THEN ADD IT TO THE API URL
 // FUNCTION THEN FETCHES CURRENT WEATHER API AND RETURNS DATA (TEMPERATURE, WIND AND HUMIDITY) FOR CURRENT DATE TO THE SCREEN
 // ADDS fiveDay FUNCTION TO RENDER ON CLICK
-function getApi() {
-    const citySearch = $('#search-city').val();
+function getApi(e) {
+    e.preventDefault();
 
-    let requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearch + '&appid=' + apiKey + '&units=imperial';
+    let requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + citySearch.val() + '&appid=' + apiKey + '&units=imperial';
     fetch(requestURL)
         .then(res => {
             return res.json();
@@ -70,13 +71,15 @@ function getApi() {
         fiveDay();
 
         cityStorage();
+
+        cityDisplay();
 } 
 
 // FUNCTION FOR FIVE DAY FORECAST
 function fiveDay() {
-    const citySearch = $('#search-city').val();
+    // const citySearch = $('#search-city').val();
     // API TO GET 5 DAY FORECAST FOR CITY
-    let fiveDayURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&appid=' + apiKey + '&units=imperial';
+    let fiveDayURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearch.val() + '&appid=' + apiKey + '&units=imperial';
     
     fetch(fiveDayURL)
         .then(res => {
@@ -117,12 +120,30 @@ function fiveDay() {
 }
 
 // ADD SEARCHED CITIES BUTTON TO STORAGE AND RENDER BELOW SEARCH BUTTON
-let city = [];
+ let city = /* JSON.parse(localStorage.getItem("userSearch")) ||*/ [];
 
 function cityStorage() {
-    const citySearch = $('#search-city').val(); 
-
-    let addCity = 
-    localStorage.setItem("citySearch", city);
-    console.log(localStorage);
+    city.unshift(citySearch.val());
+    localStorage.setItem("userSearch", JSON.stringify(city));
+    
+    for ( let i = 0; i < city.length; i++ ) {
+        return city[i];
+        }
 }
+
+// RETURN CITY IN FOR LOOP WITHOUT REPEATING
+function cityDisplay() {
+    let getCity = JSON.parse(localStorage.getItem("userSearch"));
+    console.log(getCity);
+
+    for (let i = 0; i < getCity.length; i++) {
+        console.log(getCity[i]);
+        let cityList = document.createElement('li');
+        cityList.textContent = getCity[i];
+        $('.cities').append(cityList);
+} 
+
+city.length = 0;
+}
+
+

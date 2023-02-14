@@ -69,10 +69,6 @@ function getApi(e) {
         });
 
         fiveDay();
-
-        cityStorage();
-
-        cityDisplay();
 } 
 
 // FUNCTION FOR FIVE DAY FORECAST
@@ -80,7 +76,7 @@ function fiveDay() {
     // const citySearch = $('#search-city').val();
     // API TO GET 5 DAY FORECAST FOR CITY
     let fiveDayURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearch.val() + '&appid=' + apiKey + '&units=imperial';
-    
+        
     fetch(fiveDayURL)
         .then(res => {
             return res.json();
@@ -119,31 +115,6 @@ function fiveDay() {
         })
 }
 
-// ADD SEARCHED CITIES BUTTON TO STORAGE AND RENDER BELOW SEARCH BUTTON
- let city = /* JSON.parse(localStorage.getItem("userSearch")) ||*/ [];
 
-function cityStorage() {
-    city.unshift(citySearch.val());
-    localStorage.setItem("userSearch", JSON.stringify(city));
-    
-    for ( let i = 0; i < city.length; i++ ) {
-        return city[i];
-        }
-}
-
-// RETURN CITY IN FOR LOOP WITHOUT REPEATING
-function cityDisplay() {
-    let getCity = JSON.parse(localStorage.getItem("userSearch"));
-    console.log(getCity);
-
-    for (let i = 0; i < getCity.length; i++) {
-        console.log(getCity[i]);
-        let cityList = document.createElement('li');
-        cityList.textContent = getCity[i];
-        $('.cities').append(cityList);
-} 
-
-city.length = 0;
-}
 
 
